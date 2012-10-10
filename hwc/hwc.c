@@ -1493,7 +1493,9 @@ static void handle_hotplug(omap3_hwc_device_t *hwc_dev, int state)
         system("echo 0 >" "/sys/devices/platform/omapdss/display1/enabled");
         system("echo 0 >" "/sys/devices/platform/omapdss/overlay0/enabled");
 	system("echo 0 >" "/sys/devices/platform/omapdss/overlay1/enabled");
-	system("echo 800,450 >" "/sys/devices/platform/omapdss/overlay1/output_size");
+#if defined(SCREEN_WIDTH) && defined(SCREEN_HEIGHT)
+	system("echo " #SCREEN_WIDTH "," #SCREEN_HEIGHT " >" "/sys/devices/platform/omapdss/overlay1/output_size");
+#endif
         system("echo lcd >" "/sys/devices/platform/omapdss/manager0/display");
         system("echo 1 >" "/sys/devices/platform/omapdss/display0/enabled");
 	system("echo 1 >" "/sys/devices/platform/omapdss/overlay1/enabled");
