@@ -22,7 +22,7 @@
 #include <poll.h>
 #include <sys/ioctl.h>
 #include <linux/fb.h>
-#include <linux/omapfb.h>
+/*#include <linux/omapfb.h>*/
 #include <sys/resource.h>
 
 #include <cutils/properties.h>
@@ -46,7 +46,11 @@
 #define DIV_ROUND_UP(a, b) (((a) + (b) - 1) / (b))
 
 /* For some reason this does not include it without an absolute path, which sucks totally. */
-#include "../../../../kernel/lge/p970/include/video/dsscomp.h"
+#include "../../../../kernel/bn/encore/include/video/dsscomp.h"
+#include "../../../../kernel/bn/encore/include/linux/ion.h"
+
+#define OMAP_IOW(num, dtype)	_IOW('O', num, dtype)
+#define OMAPFB_ENABLEVSYNC	OMAP_IOW(64, int)
 
 #include "hal_public.h"
 

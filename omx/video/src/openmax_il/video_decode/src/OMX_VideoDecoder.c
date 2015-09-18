@@ -80,6 +80,10 @@
 #include <ion.h>
 #endif
 
+/*#include "../../../../../../kernel/bn/encore/include/linux/ion.h"
+#define ION_IOC_MAP_GRALLOC	_IOWR(ION_IOC_MAGIC, 9, \
+				struct ion_map_gralloc_to_ionhandle_data)*/
+
 #include "hal_public.h"
 #include "OMX_IVCommon.h"
 
@@ -530,7 +534,6 @@ OMX_ERRORTYPE OMX_ComponentInit (OMX_HANDLETYPE hComponent)
     }
 	else
 	{
-         //DOMX_ERROR("FATAL: gralloc api hw_get_module() returned error: Can't find \
 		 %s module err = %x", GRALLOC_HARDWARE_MODULE_ID, err);
 		eError = OMX_ErrorInsufficientResources;
 		return eError;
