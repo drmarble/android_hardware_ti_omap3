@@ -56,10 +56,10 @@ LOCAL_C_INCLUDES := \
         hardware/libhardware/include 
       #  hardware/ti/omap3/liboverlay
 
-ifeq ($(PERF_INSTRUMENTATION),1)
-LOCAL_C_INCLUDES += \
-        $(TI_OMX_SYSTEM)/perf/inc
-endif
+#ifeq ($(PERF_INSTRUMENTATION),1)
+#LOCAL_C_INCLUDES += \
+#        $(TI_OMX_SYSTEM)/perf/inc
+#endif
 
 LOCAL_SHARED_LIBRARIES := \
         $(TI_OMX_COMP_SHARED_LIBRARIES) \
@@ -71,10 +71,10 @@ LOCAL_STATIC_LIBRARIES := \
         ittiam_h264 \
         ittiam_wmv9
 
-ifeq ($(PERF_INSTRUMENTATION),1)
-LOCAL_SHARED_LIBRARIES += \
-        libPERF
-endif
+#ifeq ($(PERF_INSTRUMENTATION),1)
+#LOCAL_SHARED_LIBRARIES += \
+#        libPERF
+#endif
 
 LOCAL_CFLAGS := \
         $(TI_OMX_CFLAGS) \
