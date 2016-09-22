@@ -2072,29 +2072,4 @@ void G729ENC_eprint(int iLineNum, const char *szFunctionName, const char *strFor
 
 void G729ENC_Log(const char *szFileName, int iLineNum, const char *szFunctionName, const char *strFormat, ...)
 {
-    va_list list;
-        
-    if (szFileName ==(const char *) "OMX_G729Encoder.c")
-    {
-        fprintf(stdout, "%s", DBG_TEXT_GREEN);
-    }
-    else if (szFileName == (const char *)"OMX_G729Enc_ComponentThread.c")
-    {
-        fprintf(stdout, "%s", DBG_TEXT_YELLOW);
-    }
-    else if (szFileName == (const char *)"OMX_G729Enc_Utils.c")
-    {
-        fprintf(stdout, "%s", DBG_TEXT_CYAN);
-    }
-    else
-    {
-        fprintf(stdout, "%s", DBG_TEXT_WHITE);
-    }
-    fprintf(stdout, "%s::", szFileName);
-    fprintf(stdout, "%s", DBG_TEXT_WHITE);
-    fprintf(stdout, "%s():%d: ", szFunctionName, iLineNum);
-    fprintf(stdout, "%s", DBG_TEXT_WHITE);
-    va_start(list, strFormat);
-    vfprintf(stdout, strFormat, list);
-    va_end(list);
 }
