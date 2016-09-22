@@ -18,6 +18,7 @@ ifeq ($(TARGET_BOARD_PLATFORM),omap3)
 LOCAL_PATH:= $(call my-dir)
 HARDWARE_TI_OMAP3_BASE:= $(LOCAL_PATH)
 OMAP3_DEBUG_MEMLEAK:= false
+-Wno-error=int-conversion
 
 ifeq ($(OMAP3_DEBUG_MEMLEAK),true)
 
