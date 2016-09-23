@@ -88,6 +88,7 @@
 /*         DD MM YYYY   Author(s)       Changes (Describe the changes made)  */
 /*         09 03 2010   Ittiam          Draft                                */
 /*****************************************************************************/
+void h264_scaling_list(OMX_U32 size, OMX_U32 *nRbspPosition, OMX_U8 *nRbspByte);
 OMX_U32 GET_NUM_BIT_REQ(OMX_U32 num)
 {
     OMX_U8 i = 0;
@@ -1229,7 +1230,7 @@ OMX_ERRORTYPE VIDDEC_ParseVideo_H264(VIDDEC_COMPONENT_PRIVATE *pComponentPrivate
     sParserParam->nProfileIdc = VIDDEC_GetBits(&nRbspPosition, 8, nRbspByte,
 																	OMX_TRUE);
     pComponentPrivate->AVCProfileType = sParserParam->nProfileIdc;
-    ALOGD("%s:%d %d", __FUNCTION__, __LINE__, sParserParam->nProfileIdc);
+    ALOGD("%s:%d %d", __FUNCTION__, __LINE__, (int)sParserParam->nProfileIdc);
 
     /* constraint_set0_flag u(1)*/
     sParserParam->nConstraintSet0Flag = VIDDEC_GetBits(&nRbspPosition, 1,
@@ -1274,9 +1275,9 @@ OMX_ERRORTYPE VIDDEC_ParseVideo_H264(VIDDEC_COMPONENT_PRIVATE *pComponentPrivate
 				if(temp)
 				{
 					if(i < 6)
-						h264_scaling_list(16, &nRbspPosition, nRbspByte);
+						h264_scaling_list((unsigned long)16, &nRbspPosition, nRbspByte);
 					else
-						h264_scaling_list(64, &nRbspPosition, nRbspByte);
+						h264_scaling_list((unsigned long)64, &nRbspPosition, nRbspByte);
 				}
 			}
 		}
@@ -1535,7 +1536,7 @@ OMX_ERRORTYPE VIDDEC_ParseHeader(VIDDEC_COMPONENT_PRIVATE *pComponentPrivate,
 
             pComponentPrivate->nCropWidth = nCropWidth;
 			pComponentPrivate->nCropHeight = nCropHeight;
-            ALOGD("%s : %d Crop width from header = %d, Crop height from header = %d", __func__, __LINE__, pComponentPrivate->nCropWidth, pComponentPrivate->nCropHeight);
+            ALOGD("%s : %d Crop width from header = %d, (int)Crop height from header = %d", __func__, __LINE__, pComponentPrivate->nCropWidth, pComponentPrivate->nCropHeight);
 
 			/* Start Code to handle fragmentation of ConfigBuffer for AVC */
             if((OMX_FALSE == pComponentPrivate->bConfigBufferCompleteAVC) &&
